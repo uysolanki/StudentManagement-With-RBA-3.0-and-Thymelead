@@ -1,0 +1,24 @@
+step 1:in pom.xml
+		sb version 3.1.11
+		java 17
+
+step 2: in application.properties
+	
+		spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+step 3: in entity classes
+		replace javax by jakarta
+		
+step 4: in WebConfig class
+		replace antMatchers by requestMatchers
+
+		.antMatchers("/","/employees","/employees/new","/403").hasAnyAuthority("USER","ADMIN")
+		 replaced by
+		.requestMatchers("/","/employees","/employees/new","/403").hasAnyAuthority("USER","ADMIN")
+ 
+ 
+		@Bean
+	    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
+	    {
+		
+		return http.build();
+		}
